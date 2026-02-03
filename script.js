@@ -26,42 +26,42 @@ let notas = []; // TODO: este array será el que uses en toda la práctica
  * Referencia al input numérico donde se introduce la nota.
  * @type {HTMLInputElement}
  */
-
+const input= document.querySelector("#notaInput");
 /**
  * Botón para añadir una nota.
  * @type {HTMLButtonElement}
  */
-
+const btnAñadir= document.querySelector("#btnAgregar");
 /**
  * Botón para ordenar de menor a mayor.
  * @type {HTMLButtonElement}
  */
-
+const btnOrdenAsc= document.querySelector("#btnOrdenAsc");
 /**
  * Botón para ordenar de mayor a menor.
  * @type {HTMLButtonElement}
  */
-
+const btnOrdenDesc= document.querySelector("#btnOrdenDesc");
 /**
  * Botón para limpiar todas las notas.
  * @type {HTMLButtonElement}
  */
-
+const btnLimpiar= document.querySelector("#btnLimpiar");
 /**
  * Lista (ul) donde se mostrarán las notas.
  * @type {HTMLUListElement}
  */
-
+const listaNotas= document.querySelector("#listaNotas");
 /**
  * Párrafo donde se mostrará el resumen.
  * @type {HTMLParagraphElement}
  */
-
+const resumen= document.querySelector("#txtResumen");
 /**
  * Párrafo donde se mostrarán mensajes de error.
  * @type {HTMLParagraphElement}
  */
-
+const mensajeError= document.querySelector("#mensaje");
 
 /* ==========================================================
    3) INICIALIZACIÓN (eventos)
