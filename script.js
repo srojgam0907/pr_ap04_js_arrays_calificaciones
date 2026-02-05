@@ -108,6 +108,20 @@ function agregarNota() {
   // TODO: si es correcto, hacer push al array "notas"
   // TODO: limpiar el input y devolver el foco al input
   // TODO: llamar a render()
+
+    let nota= Number(input.value);
+
+    if(isNaN(nota) || nota<0 || nota>10) {
+      mostrarMensaje("La nota introducida debe estar entre 0 y 10 para ser válida");
+      return;
+    }
+
+    notas.push(nota);
+
+    input.value= ""; //SRG: borra lo que hay escrito en el input
+    input.focus(); //SRG: coloca el cursor del ratón en el input
+
+    render();
 }
 
 /**
@@ -117,6 +131,9 @@ function agregarNota() {
 function ordenarAsc() {
   // TODO: ordenar el array de menor a mayor (recuerda que sort necesita comparador numérico)
   // TODO: llamar a render()
+  //SRG: si a-b devuelve: un negativo, a es menor que b, si devuelve un positivo, b es menor que a
+  notas.sort((a, b) => a - b);
+  render();
 }
 
 /**
@@ -126,6 +143,9 @@ function ordenarAsc() {
 function ordenarDesc() {
   // TODO: ordenar el array de mayor a menor
   // TODO: llamar a render()
+  //SRG: si b-a devuelve: un negativo, b es mayor que a, si devuelve un positivo b es menor que a
+  notas.sort((a, b) => b - a); 
+  render();
 }
 
 /**
@@ -135,6 +155,9 @@ function ordenarDesc() {
 function limpiarTodo() {
   // TODO: vaciar el array de notas
   // TODO: llamar a render()
+
+  notas= [];
+  render();
 }
 
 
