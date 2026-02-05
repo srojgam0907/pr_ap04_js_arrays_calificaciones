@@ -73,8 +73,19 @@ const mensajeError= document.querySelector("#mensaje");
  */
 function init() {
   // TODO: registrar los eventos de los botones (click)
+  btnAñadir.addEventListener("click", agregarNota); 
+
+  btnOrdenAsc.addEventListener("click", ordenarAsc); 
+
+  btnOrdenDesc.addEventListener("click", ordenarDesc); 
+
+  btnLimpiar.addEventListener("click", limpiarTodo); 
+
   // TODO: registrar el evento "Enter" en el input para que sea equivalente a añadir
+  input.addEventListener("keydown", agregarNota);
+
   // TODO: pintar el estado inicial (lista + resumen)
+  render();
 }
 
 init();
