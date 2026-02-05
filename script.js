@@ -82,7 +82,11 @@ function init() {
   btnLimpiar.addEventListener("click", limpiarTodo); 
 
   // TODO: registrar el evento "Enter" en el input para que sea equivalente a añadir
-  input.addEventListener("keydown", agregarNota);
+  input.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") {
+      agregarNota();
+    }
+  });
 
   // TODO: pintar el estado inicial (lista + resumen)
   render();
