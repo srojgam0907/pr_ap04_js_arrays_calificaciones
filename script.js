@@ -174,6 +174,9 @@ function limpiarTodo() {
 function render() {
   // TODO: llamar a pintarLista()
   // TODO: llamar a pintarResumen()
+
+  pintarLista();
+  pintarResumen();
 }
 
 /**
@@ -184,6 +187,14 @@ function pintarLista() {
   // TODO: vaciar listaNotas (innerHTML)
   // TODO: recorrer "notas" y crear un <li> por cada nota
   // TODO: añadir cada <li> al <ul>
+
+  listaNotas.innerHTML= "";
+
+  for(let i=0; i<notas.length; i++) {
+    const li= document.createElement("li"); //SRG: Crea el elemento <li>
+    li.textContent= notas[i]; //SRG: pinta en el elemento <li> la nota
+    listaNotas.appendChild(li); //SRG: añade a la lista <ul> el elemento <li>
+  }
 }
 
 /**
@@ -200,6 +211,22 @@ function pintarResumen() {
   // TODO: si no hay notas, mostrar "Aún no hay notas."
   // TODO: si hay notas, calcular todos los valores (media, max, min, etc.)
   // TODO: construir un texto resumen y asignarlo a txtResumen.textContent
+
+  if (notas.length === 0) {
+    resumen.textContent = "Aún no hay notas";
+    return;
+  }
+
+  const total= notas.length;
+  const media= calcularMedia(notas);
+  const notaMax= calcularMax(notas);
+  const notaMin= calcularMin(notas);
+  const numAprobados= contarAprobados(notas);
+  const numSuspensos= total - numAprobados;
+
+  resumen.textContent= `Total: ${total}\n` + `Media: ${media}\n` + `Máxima nota: ${notaMax}\n` 
+                      + `Mínima nota: ${notaMin}\n` + `Aprobados: ${numAprobados}\n` + `Suspensos: ${numSuspensos}`;
+
 }
 
 
