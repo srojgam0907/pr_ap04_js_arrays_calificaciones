@@ -241,6 +241,14 @@ function pintarResumen() {
  */
 function calcularMedia(array) {
   // TODO: sumar todos los elementos y dividir entre array.length
+
+  let suma= 0;
+
+  for(let i= 0; i<array.length; i++) {
+    suma+= array[i];
+  }
+
+  return suma / array.length;
 }
 
 /**
@@ -250,6 +258,16 @@ function calcularMedia(array) {
  */
 function calcularMax(array) {
   // TODO: recorrer y guardar el máximo
+
+  let max= 0;
+
+  for(let i=0; i<array.length; i++) {
+    if(array[i] > max) {
+      max= array[i];
+    }
+  }
+
+  return max;
 }
 
 /**
@@ -259,6 +277,16 @@ function calcularMax(array) {
  */
 function calcularMin(array) {
   // TODO: recorrer y guardar el mínimo
+
+  let min= 0;
+
+  for(let i=0; i< array.length; i++) {
+    if(array[i] < min) {
+      min= array[i];
+    }
+  }
+
+  return min;
 }
 
 /**
@@ -268,6 +296,16 @@ function calcularMin(array) {
  */
 function contarAprobados(array) {
   // TODO: recorrer y contar >= 5
+
+  let aprobados= 0;
+
+  for(let i= 0; i< array.length; i++) {
+    if(array[i] >= 5) {
+      aprobados++;
+    }
+  }
+
+  return aprobados;
 }
 
 
