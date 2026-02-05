@@ -323,6 +323,12 @@ function mostrarMensaje(texto) {
   // TODO: mostrar texto
   // TODO: programar que se borre después de X ms con setTimeout
   // TODO (opcional): si llega otro error antes de borrarse, evitar solapes
+
+  mensajeError.textContent= texto;
+
+  setTimeout(() => {
+        mensajeError.textContent= "";
+    }, 3000);
 }
 
 /**
@@ -330,5 +336,5 @@ function mostrarMensaje(texto) {
  * @returns {void}
  */
 function limpiarMensaje() {
-
+  mensajeError.textContent= "";
 }
