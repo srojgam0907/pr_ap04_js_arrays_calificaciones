@@ -228,8 +228,8 @@ function pintarResumen() {
   const numAprobados= contarAprobados(notas);
   const numSuspensos= total - numAprobados;
 
-  resumen.textContent= `Total: ${total}\n` + `Media: ${media}\n` + `Máxima nota: ${notaMax}\n` 
-                      + `Mínima nota: ${notaMin}\n` + `Aprobados: ${numAprobados}\n` + `Suspensos: ${numSuspensos}`;
+  resumen.innerHTML= `Total: ${total}<br>` + `Media: ${media}<br>` + `Máxima nota: ${notaMax}<br>` 
+                    + `Mínima nota: ${notaMin}<br>` + `Aprobados: ${numAprobados}<br>` + `Suspensos: ${numSuspensos}`;
 
 }
 
