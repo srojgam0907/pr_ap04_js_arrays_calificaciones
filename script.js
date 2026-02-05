@@ -282,7 +282,7 @@ function calcularMax(array) {
 function calcularMin(array) {
   // TODO: recorrer y guardar el mínimo
 
-  let min= 0;
+  let min= array[0];
 
   for(let i=0; i< array.length; i++) {
     if(array[i] < min) {
