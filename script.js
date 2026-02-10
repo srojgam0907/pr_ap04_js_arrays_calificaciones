@@ -113,6 +113,11 @@ function agregarNota() {
   // TODO: limpiar el input y devolver el foco al input
   // TODO: llamar a render()
 
+    if(input.value.trim() === "") {
+      mostrarMensaje("No debe dejar la nota en blanco");
+      return;
+    }
+
     let nota= Number(input.value);
 
     if(isNaN(nota) || nota<0 || nota>10) {
@@ -160,7 +165,7 @@ function limpiarTodo() {
   // TODO: vaciar el array de notas
   // TODO: llamar a render()
 
-  notas= [];
+  notas.length= 0;
   render();
 }
 
@@ -192,13 +197,25 @@ function pintarLista() {
   // TODO: recorrer "notas" y crear un <li> por cada nota
   // TODO: añadir cada <li> al <ul>
 
-  listaNotas.innerHTML= "";
+  listaNotas.textContent= "";
 
   for(let i=0; i<notas.length; i++) {
     const li= document.createElement("li"); //SRG: Crea el elemento <li>
     li.textContent= notas[i]; //SRG: pinta en el elemento <li> la nota
     listaNotas.appendChild(li); //SRG: añade a la lista <ul> el elemento <li>
   }
+
+  /* Opcion más optima:
+  const fragment = document.createDocumentFragment();
+  
+  for (const nota of notas) {
+    const li = document.createElement("li");
+    li.textContent = nota;
+    fragment.appendChild(li);
+  }
+
+  listaNotas.appendChild(fragment);
+  */
 }
 
 /**
@@ -228,8 +245,13 @@ function pintarResumen() {
   const numAprobados= contarAprobados(notas);
   const numSuspensos= total - numAprobados;
 
-  resumen.innerHTML= `Total: ${total}<br>` + `Media: ${media}<br>` + `Máxima nota: ${notaMax}<br>` 
-                    + `Mínima nota: ${notaMin}<br>` + `Aprobados: ${numAprobados}<br>` + `Suspensos: ${numSuspensos}`;
+  resumen.innerHTML= `<strong>Total:</strong> ${total}<br> 
+                      <strong>Media:</strong> ${media.toFixed(2)}<br> 
+                      <strong>Máxima nota:</strong> ${notaMax}<br>
+                      <strong>Mínima nota:</strong> ${notaMin}<br> 
+                      <strong>Aprobados:</strong> ${numAprobados}<br>
+                      <strong>Suspensos:</strong> ${numSuspensos}
+                    `;
 
 }
 
@@ -263,7 +285,7 @@ function calcularMedia(array) {
 function calcularMax(array) {
   // TODO: recorrer y guardar el máximo
 
-  let max= 0;
+  let max= array[0];
 
   for(let i=0; i<array.length; i++) {
     if(array[i] > max) {
