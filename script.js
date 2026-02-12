@@ -63,6 +63,9 @@ const resumen= document.querySelector("#txtResumen");
  */
 const mensajeError= document.querySelector("#mensaje");
 
+//Variables y constantes
+const CLAVE_NOTAS= "notas";
+
 /* ==========================================================
    3) INICIALIZACIÓN (eventos)
    ========================================================== */
@@ -72,6 +75,12 @@ const mensajeError= document.querySelector("#mensaje");
  * @returns {void}
  */
 function init() {
+  notas= JSON.parse(localStorage.getItem(CLAVE_NOTAS));
+
+  if(notas === null) {
+    notas= [];
+  }
+
   // TODO: registrar los eventos de los botones (click)
   btnAñadir.addEventListener("click", agregarNota); 
 
@@ -129,6 +138,7 @@ function agregarNota() {
 
     input.value= ""; //SRG: borra lo que hay escrito en el input
     input.focus(); //SRG: coloca el cursor del ratón en el input
+    localStorage.setItem(CLAVE_NOTAS, JSON.stringify(notas));
 
     render();
 }
@@ -166,6 +176,7 @@ function limpiarTodo() {
   // TODO: llamar a render()
 
   notas.length= 0;
+  localStorage.removeItem(CLAVE_NOTAS);
   render();
 }
 
